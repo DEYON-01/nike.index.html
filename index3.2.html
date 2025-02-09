@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop the Latest Nike Shoes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.5;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background-color: #fff;
+            height: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            height: 80px;
+            max-width: 1300px;
+            padding: 0 50px;
+        }
+
+        .navbar-logo {
+            color: #000;
+            font-size: 2rem;
+            font-weight: bold;
+            text-decoration: none;
+            font-family: "Futura", sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nike-logo {
+            height: 70px;
+            width: auto;
+        }
+
+        @media (max-width: 768px) {
+            .nike-logo {
+                height: 58px; /* Reduced from 30px */
+            }
+
+            .navbar-logo {
+                font-size: 1.2rem; /* Reduced from 1.5rem */
+            }
+
+            .menu-icon {
+                transform: scale(0.7); /* Reduced from 0.8 */
+            }
+
+            .bar {
+                width: 22px; /* Reduced from 25px */
+                height: 2px; /* Reduced from 3px */
+                margin: 4px auto; /* Reduced from 5px */
+            }
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-link {
+            color: #000;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #666;
+        }
+
+        .menu-icon {
+            display: none;
+            cursor: pointer;
+        }
+
+        .bar {
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            transition: all 0.3s ease-in-out;
+            background-color: #000;
+            display: block;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            z-index: 1;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        .hero h1 {
+            color: white;
+            font-size: 3.75rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            color: white;
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .shop-now {
+            background-color: rgb(229, 229, 229);
+            color: rgb(23, 23, 23);
+            padding: 12px 32px;
+            border: none;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            align-self: flex-start;
+        }
+
+        .shop-now:hover {
+            background-color: rgb(209, 209, 209);
+        }
+
+        /* Featured Section */
+        .featured {
+            padding: 64px 32px;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .featured h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            margin-bottom: 2rem;
+        }
+
+        .featured-products {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .product {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .product p {
+            color: #666;
+        }
+
+        /* Customize Section */
+        .customize {
+            padding: 64px 32px;
+            background-color: #f5f5f5;
+        }
+
+        .customize-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .customize h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            margin-bottom: 2rem;
+        }
+
+        .customize-options {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .customize-option {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .customize-option svg {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+            margin-top: 0.25rem;
+        }
+
+        .customize-option h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .customize-option p {
+            color: #666;
+        }
+
+        .placeholder-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Perfect Fit Section */
+        .perfect-fit {
+            padding: 40px 20px;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .perfect-fit h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        .fit-options {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .fit-box {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 300px;
+            flex: 1 1 250px;
+            transition: transform 0.3s ease;
+        }
+
+        .fit-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .fit-box h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .fit-box p {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.4;
+        }
+
+        /* Performance Footwear Section */
+        .performance-footwear {
+            padding: 40px 20px;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .performance-footwear h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .categories {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .category {
+            max-width: 250px;
+            text-align: center;
+        }
+
+        .number-arrow {
+            background-color: #f1eaea;
+            color: #333;
+            font-size: 1.8rem;
+            font-weight: bold;
+            padding: 15px 30px;
+            clip-path: polygon(10% 0%, 90% 0%, 100% 50%, 90% 100%, 10% 100%, 0% 50%);
+            margin: 0 auto 15px;
+        }
+
+        .category h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .category p {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        /* Lifestyle Section */
+        .lifestyle {
+            padding: 64px 32px;
+            background-color: #fff;
+        }
+
+        .lifestyle h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            margin-bottom: 2rem;
+        }
+
+        .lifestyle-products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .lifestyle-product {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lifestyle-product img {
+            width: 100%;
+            height: auto;
+            max-height: 250px; /* Reduced from 300px */
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .lifestyle-product .shop-now-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lifestyle-product:hover .shop-now-overlay {
+            opacity: 1;
+        }
+
+        .lifestyle-product .shop-now-button {
+            background-color: #fff;
+            color: #000;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .lifestyle-product .shop-now-button:hover {
+            background-color: #000;
+            color: #fff;
+        }
+
+        @media (max-width: 1024px) {
+            .lifestyle-product img {
+                max-height: 200px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .lifestyle-product img {
+                max-height: 180px;
+            }
+            
+            .lifestyle-products {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 1rem;
+            }
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #111;
+            color: white;
+            padding: 64px 32px 32px;
+            margin-top: 64px;
+        }
+
+        .footer-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #333;
+        }
+
+        .footer-section h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #fff;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: #888;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+        }
+
+        .newsletter input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 1rem;
+            background: #222;
+            border: 1px solid #333;
+            color: white;
+        }
+
+        .newsletter button {
+            background: white;
+            color: #111;
+            padding: 12px 24px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: opacity 0.2s;
+        }
+
+        .newsletter button:hover {
+            opacity: 0.9;
+        }
+
+        .footer-bottom {
+            max-width: 1280px;
+            margin: 2rem auto 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #666;
+            font-size: 0.875rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            color: #666;
+            transition: color 0.2s;
+        }
+
+        .social-links a:hover {
+            color: #fff;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 960px) {
+            .nav-menu {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 80px;
+                left: -100%;
+                opacity: 1;
+                transition: all 0.5s ease;
+            }
+
+            .nav-menu.active {
+                background: #fff;
+                left: 0;
+                opacity: 1;
+                transition: all 0.5s ease;
+                z-index: 1;
+            }
+
+            .nav-link {
+                text-align: center;
+                padding: 2rem;
+                width: 100%;
+                display: table;
+            }
+
+            .menu-icon {
+                display: block;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar-logo {
+                font-size: 1.2rem; /* Reduced from 1.5rem */
+            }
+
+            .nike-logo {
+                height: 55px; /* Reduced from 30px */
+            }
+
+            .menu-icon {
+                transform: scale(0.7); /* Reduced from 0.8 */
+            }
+
+            .bar {
+                width: 22px; /* Reduced from 25px */
+                height: 2px; /* Reduced from 3px */
+                margin: 4px auto; /* Reduced from 5px */
+            }
+
+            .navbar-container {
+                padding: 0 20px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.125rem;
+            }
+
+            .featured h2,
+            .customize h2 {
+                font-size: 2rem;
+            }
+
+            .featured-products,
+            .customize-content {
+                grid-template-columns: 1fr;
+            }
+
+            .categories {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .category {
+                max-width: 90%;
+            }
+
+            .fit-options {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .fit-box {
+                max-width: 90%;
+            }
+
+            .lifestyle-products {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="#" class="navbar-logo">
+                <img src="nike.png" alt="Nike Logo" class="nike-logo">
+                <span>NIKE</span>
+            </a>
+            <div class="menu-icon">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#performance" class="nav-link">Performance</a></li>
+                <li><a href="#shoe" class="nav-link">shoes</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <img src="nikemodel.jpeg" alt="Nike Shoes">
+        <div class="overlay"></div>
+        <div class="hero-content">
+            <h1>Shop the Latest Nike Shoes</h1>
+            <p>Step up your style and performance with the latest Nike footwear.</p>
+            <button class="shop-now">Shop Now</button>
+        </div>
+    </section>
+
+    <!-- Featured Section -->
+    <section class="featured">
+        <div class="container">
+            <h2>Featured New Arrivals</h2>
+            <div class="featured-products">
+                <div class="product">
+                    <h3>Nike Air Max 270</h3>
+                    <p>Experience maximum cushioning and bold style with the Nike Air Max 270. This shoe is designed for everyday wear.</p>
+                </div>
+                <div class="product">
+                    <h3>Air Jordan 1 Mid</h3>
+                    <p>A timeless classic with a fresh twist, the Air Jordan 1 Mid offers comfort and style.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customize Section -->
+    <section class="customize">
+        <div class="container">
+            <div class="customize-content">
+                <div>
+                    <h2>Customize Your Own Shoes</h2>
+                    <div class="customize-options">
+                        <div class="customize-option">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="13.5" cy="6.5" r="2.5"/>
+                                <circle cx="19.5" cy="12.5" r="2.5"/>
+                                <circle cx="6.5" cy="12.5" r="2.5"/>
+                                <circle cx="17.5" cy="19.5" r="2.5"/>
+                                <line x1="13.5" y1="9" x2="13.5" y2="14"/>
+                                <line x1="17" y1="12.5" x2="14" y2="12.5"/>
+                                <line x1="8.5" y1="14" x2="15.5" y2="19"/>
+                            </svg>
+                            <div>
+                                <h3>Choose Your Colors</h3>
+                                <p>Express your unique style by selecting from a wide range of colors.</p>
+                            </div>
+                        </div>
+                        <div class="customize-option">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z"/>
+                                <path d="M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/>
+                                <path d="M12 2v2"/>
+                                <path d="M12 22v-2"/>
+                                <path d="m17 20.66-1-1.73"/>
+                                <path d="M11 10.27 7 3.34"/>
+                                <path d="m20.66 17-1.73-1"/>
+                                <path d="m3.34 7 1.73 1"/>
+                                <path d="M14 12h8"/>
+                                <path d="M2 12h2"/>
+                                <path d="m20.66 7-1.73 1"/>
+                                <path d="m3.34 17 1.73-1"/>
+                                <path d="m17 3.34-1 1.73"/>
+                                <path d="m11 13.73-4 6.93"/>
+                            </svg>
+                            <div>
+                                <h3>Add Personal Touches</h3>
+                                <p>Customize with special designs, patterns, and embroidery.</p>
+                            </div>
+                        </div>
+                        <div class="customize-option">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
+                                <circle cx="12" cy="7" r="4"/>
+                            </svg>
+                            <div>
+                                <h3>Create Your Signature Style</h3>
+                                <p>Design a shoe that reflects your individuality and sets you apart.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <img src="phone.png" alt="Customized Nike Shoe" class="placeholder-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- Perfect Fit Section -->
+    <section class="perfect-fit">
+        <div class="container">
+            <h2>Find the Perfect Fit</h2>
+            <div class="fit-options">
+                <div class="fit-box">
+                    <h3>Measure Your Foot</h3>
+                    <p>Use our online tool to accurately measure your foot length and width.</p>
+                </div>
+                <div class="fit-box">
+                    <h3>Explore Our Size Guide</h3>
+                    <p>Find the right size and width for your specific Nike shoe model.</p>
+                </div>
+                <div class="fit-box">
+                    <h3>Read Reviews</h3>
+                    <p>Discover what other customers have to say about the fit and comfort of specific shoes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Performance Footwear Section -->
+    <section class="performance-footwear" id="performance">
+        <div class="container">
+            <h2>Performance Footwear</h2>
+            <div class="categories">
+                <div class="category">
+                    <div class="number-arrow">1</div>
+                    <h3>Running</h3>
+                    <p>Nike running shoes are engineered to deliver superior comfort and performance.</p>
+                </div>
+                <div class="category">
+                    <div class="number-arrow">2</div>
+                    <h3>Training</h3>
+                    <p>Built for high-intensity workouts, Nike training shoes provide stability and support.</p>
+                </div>
+                <div class="category">
+                    <div class="number-arrow">3</div>
+                    <h3>Basketball</h3>
+                    <p>Nike basketball shoes are designed for agility, responsiveness, and impact cushioning.</p>
+                </div>
+                <div class="category">
+                    <div class="number-arrow">4</div>
+                    <h3>Soccer</h3>
+                    <p>Experience superior grip, responsiveness, and durability with Nike soccer cleats.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lifestyle Section -->
+    <section class="lifestyle" id="shoe">
+        <div class="container">
+            <h2>Lifestyle & Casual Shoes</h2>
+            <div class="lifestyle-products">
+                <div class="product lifestyle-product">
+                    <img src="airforce.jpeg" alt="Air Force 1">
+                    <div class="shop-now-overlay">
+                        <button class="shop-now-button">Shop Now</button>
+                    </div>
+                    <h3>Air Force 1</h3>
+                    <p>A timeless classic that never goes out of style. Perfect for everyday wear.</p>
+                </div>
+                <div class="product lifestyle-product">
+                    <img src="Nike chaussures pour hommes BLAZER MID '77 Blazer baskets Classique mode chaussures décontractées.jpeg" alt="Blazer Mid">
+                    <div class="shop-now-overlay">
+                        <button class="shop-now-button">Shop Now</button>
+                    </div>
+                    <h3>Blazer Mid</h3>
+                    <p>Versatile and stylish option for a modern casual look.</p>
+                </div>
+                <div class="product lifestyle-product">
+                    <img src="The Cultural Significance of the Nike Cortez (1).jpeg" alt="Cortez">
+                    <div class="shop-now-overlay">
+                        <button class="shop-now-button">Shop Now</button>
+                    </div>
+                    <h3>Cortez</h3>
+                    <p>Legendary-inspired running shoe offering comfort and style.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Nike</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">News</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Investors</a></li>
+                        <li><a href="#">Sustainability</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Shipping & Returns</a></li>
+                        <li><a href="#">Store Locator</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Join Our Newsletter</h4>
+                    <div class="newsletter">
+                        <input type="email" placeholder="Enter your email">
+                        <button>Subscribe</button>
+                    </div>
+                    <div class="social-links" style="margin-top: 1.5rem;">
+                        <a href="#" aria-label="Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Twitter">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985z">                                
+                                </path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Navbar toggle functionality
+        const menuIcon = document.querySelector('.menu-icon');
+        const navMenu = document.querySelector('.nav-menu');
+
+        // Toggle menu when menu icon is clicked
+        menuIcon.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            menuIcon.classList.toggle('active');
+        });
+
+        // Close menu when a nav link is clicked
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                menuIcon.classList.remove('active');
+            });
+        });
+
+        // Close menu when clicking outside the menu
+        document.addEventListener('click', (e) => {
+            if (!menuIcon.contains(e.target) && !navMenu.contains(e.target)) {
+                navMenu.classList.remove('active');
+                menuIcon.classList.remove('active');
+            }
+        });
+
+        // Smooth scroll for "Shop Now" button
+        document.querySelector('.shop-now').addEventListener('click', () => {
+            document.querySelector('.featured').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        });
+
+        // Fade-in animation for hero content
+        document.addEventListener('DOMContentLoaded', () => {
+            const heroContent = document.querySelector('.hero-content');
+            heroContent.style.opacity = '0';
+            
+            setTimeout(() => {
+                heroContent.style.transition = 'opacity 1s ease-in-out';
+                heroContent.style.opacity = '1';
+            }, 100);
+        });
+
+        // Add hover effect for lifestyle product images
+        const lifestyleProducts = document.querySelectorAll('.lifestyle-product');
+        lifestyleProducts.forEach(product => {
+            const overlay = product.querySelector('.shop-now-overlay');
+            const button = product.querySelector('.shop-now-button');
+
+            product.addEventListener('mouseenter', () => {
+                overlay.style.opacity = '1';
+            });
+
+            product.addEventListener('mouseleave', () => {
+                overlay.style.opacity = '0';
+            });
+
+            button.addEventListener('click', () => {
+                alert('Redirecting to product page...'); // Replace with actual link or functionality
+            });
+        });
+    </script>
+</body>
+</html>                      
